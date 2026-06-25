@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · leyu 访问与体验手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1d1d1f;
+            background: #f9f9fb;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #121214 0%, #1d1d20 100%);
+            color: #eaeaef;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f9f9fb;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scaleY(0.25);
+            transform-origin: bottom;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #b0b0b8;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.3rem 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #9a9aa2;
+            letter-spacing: 0.3px;
+        }
+
+        /* 正文区 */
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .content article {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .article-title {
+            font-size: 1.65rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            color: #111;
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.8rem;
+        }
+
+        .lead {
+            font-size: 1.08rem;
+            color: #3a3a3e;
+            background: #f6f6f8;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2b7be4;
+        }
+
+        .content p {
+            margin-bottom: 1.4rem;
+            color: #2c2c2e;
+        }
+
+        .content strong {
+            color: #1d1d1f;
+        }
+
+        .content a {
+            color: #2a7bde;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .content a:hover {
+            border-bottom-color: #2a7bde;
+            color: #1557b0;
+        }
+
+        /* 引用提示块 */
+        .block-quote {
+            background: #f3f4f8;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #e68a2e;
+            font-style: normal;
+        }
+
+        .block-quote p {
+            margin-bottom: 0.5rem;
+        }
+
+        .block-quote .quote-label {
+            font-size: 0.8rem;
+            color: #8a8a90;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-mini {
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e5e5ea;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item dt {
+            font-weight: 500;
+            color: #2c2c2e;
+            cursor: default;
+        }
+
+        .faq-item dd {
+            margin-left: 0;
+            color: #5c5c62;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 访问句 —— 低调收尾 */
+        .visit-note {
+            margin-top: 2.5rem;
+            padding: 1rem 0 0.2rem;
+            font-size: 0.95rem;
+            color: #5c5c62;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .visit-note span {
+            background: #f0f1f5;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #3d3d42;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3rem 1.2rem 2.8rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .content {
+                padding: 1.8rem 1rem 3rem;
+            }
+            .content article {
+                padding: 1.8rem 1.2rem;
+            }
+            .article-title {
+                font-size: 1.35rem;
+            }
+            .lead {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            .block-quote {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+            .content article {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>从零开始的访问指南</h1>
+        <p>一个普通用户整理的使用备忘 · 关于 leyu 的简明笔记与提醒</p>
+        <span class="tag">生活化 · 实用向</span>
+    </header>
+
+    <main class="content">
+        <article>
+            <h2 class="article-title">leyu · 访问与体验简明手记</h2>
+            <div class="article-meta">日常记录 · 2025 · 个人整理</div>
+
+            <div class="lead">
+                有时只是需要一个稳定、清晰的起点。本文整理了我自己摸索时的几个关键点，以及一些容易被忽略的提醒。
+            </div>
+
+            <p>
+                第一次接触 <strong>leyu</strong> 是因为朋友的推荐。说实话，刚开始面对各种链接和入口，确实有点摸不着头脑。后来习惯先通过 <a href="https://url1-leyu.com">leyu</a> 看一眼最新动态，再慢慢了解其他功能。如果你也是初次尝试，不妨把那个页面当作一个安静的起点。
+            </p>
+
+            <p>
+                网络上的信息很杂，有些教程把步骤写得很复杂，反而容易把人绕晕。我的经验是：记住最主要的地址，其他周边内容可以后续再补。就像你只需要知道一本书的封面长什么样，剩下的目录慢慢翻也不迟。平时我用得最多的就是 <a href="https://url1-leyu.com">leyu</a>，没有多余跳转，加载也快。
+            </p>
+
+            <div class="block-quote">
+                <div class="quote-label">📌 个人提醒</div>
+                <p>别一次性收藏太多网址。选一个最常用的，固定下来，其他当作备用就好。频繁切换反而容易记混。</p>
+                <p>另外，留意网络环境是否顺畅，有时候打不开并不是网站的问题。</p>
+            </div>
+
+            <p>
+                关于安全性，我习惯使用主流浏览器，并且定期清理缓存。对于任何需要输入个人信息的页面，我都会多看一眼地址栏。如果你不确定某个链接是否可靠，不妨回到最原始的入口——对我来说，那就是 <a href="https://url1-leyu.com">leyu</a>，至少心里有底。
+            </p>
+
+            <p>
+                还有一个场景：出差或换设备的时候，很多人会临时搜索关键词。但搜索结果的广告和仿冒站点不少。我个人的习惯是提前把地址记在备忘录里，或者直接访问 <a href="https://url1-leyu.com">leyu</a> 确认后再操作。多花十秒钟，避免后续麻烦。
+            </p>
+
+            <div class="faq-mini">
+                <h3>❓ 一些常见小问题</h3>
+                <dl class="faq-item">
+                    <dt>第一次访问需要注册吗？</dt>
+                    <dd>不需要。先浏览内容，觉得合适再考虑后续步骤，不用着急。</dd>
+                </dl>
+                <dl class="faq-item">
+                    <dt>为什么有时候页面加载慢？</dt>
+                    <dd>可能是本地网络波动，可以换个时间段或切换网络试试。多试几次通常就正常了。</dd>
+                </dl>
+                <dl class="faq-item">
+                    <dt>有没有推荐的访问方式？</dt>
+                    <dd>直接通过浏览器访问 <a href="https://url1-leyu.com">leyu</a> 最省事，不需要额外工具或插件。</dd>
+                </dl>
+            </div>
+
+            <div class="visit-note">
+                <span>✳️ 访问句</span> 保持简单，记住一个地址就够了。其他的一切，慢慢熟悉就好。
+            </div>
+        </article>
+    </main>
+</body>
+</html>
